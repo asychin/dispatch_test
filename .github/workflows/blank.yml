@@ -1,0 +1,19 @@
+name: Test Json
+
+on:
+  push:
+    branches: [ dev ]
+  workflow_dispatch:
+    inputs:
+      services:
+        description: 'Services to build and deploy (comma separated): "api-gateway","api-service","etc service"'
+        default: '"api-gateway","api-service"'
+        required: true
+
+jobs:
+  TestJson:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run a multi-line script
+        run: |
+          echo ${{ fromJSON(format('[{0}]', inputs.services )) }}
