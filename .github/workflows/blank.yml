@@ -13,7 +13,16 @@ on:
 jobs:
   TestJson:
     runs-on: ubuntu-latest
+    #Matrix Strategy
+    strategy:
+      fail-fast: true
+      matrix:
+        include:
+          - text: ${{ fromJSON(format('[{0}]', inputs.services)) }}
+    permissions:
+      contents: read
+      packages: write
     steps:
       - name: Run a multi-line script
         run: |
-          echo ${{ fromJSON(format('[{0}]', inputs.services || '"api-gateway","api-service"' )) }}
+          echo ${{ matrix.text }}
