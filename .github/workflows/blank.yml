@@ -28,4 +28,4 @@ jobs:
       packages: write
     steps:
       - name: Run a multi-line script
-        run: echo ${{ matrix.text }}
+        run: echo ETO-${{ matrix.text }}
