@@ -17,7 +17,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        text: 'ETO-${{ fromJSON(format('[{0}]', inputs.services)) }}'
+        text: 'ETO-${{ fromJSON(format([{0}], inputs.services)) }}'
     permissions:
       contents: read
       packages: write
