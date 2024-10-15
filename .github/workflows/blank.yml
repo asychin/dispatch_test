@@ -9,6 +9,9 @@ on:
         description: 'Services to build and deploy (comma separated): "api-gateway","api-service","etc service"'
         default: '"api-gateway", "api-service"'
         required: true
+env:
+  GITPATH: './packages/'
+  REPO: 'nexus-trillions.wsdemo.online/'
 
 jobs:
   TestJson:
@@ -16,8 +19,10 @@ jobs:
     #Matrix Strategy
     strategy:
       fail-fast: true
+
+
       matrix:
-        text: \'ETO-${{ fromJSON(format('[{0}]', inputs.services)) }}'
+        text: 'Some info. Default: `\$\{\{ github.token \}\}`'
     permissions:
       contents: read
       packages: write
