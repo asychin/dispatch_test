@@ -7,7 +7,7 @@ on:
     inputs:
       services:
         description: 'Services to build and deploy (comma separated): "api-gateway","api-service","etc service"'
-        default: '"api-gateway","api-service"'
+        default: '"api-gateway", "api-service"'
         required: true
 
 jobs:
