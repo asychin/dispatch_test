@@ -17,12 +17,10 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        include:
-          - text: ${{ fromJSON(format('[{0}]', inputs.services)) }}
+          text: ${{ fromJSON(format('[{0}]', inputs.services)) }}
     permissions:
       contents: read
       packages: write
     steps:
       - name: Run a multi-line script
-        run: |
-          echo ${{ matrix.text }}
+        run: echo ${{ matrix.text }}
