@@ -16,10 +16,6 @@ env:
 jobs:
   TestJson:
     runs-on: ubuntu-latest
-    #Matrix Strategy
-    strategy:
-      fail-fast: true
-
 
       matrix:
         text: ${{ fromJSON(format('[{0}]', inputs.services)) }}
@@ -27,5 +23,8 @@ jobs:
       contents: read
       packages: write
     steps:
-      - name: Run a multi-line script
-        run: echo ETO-${{ matrix.text }}
+      - name: Dash to undercase for services (servrets only undercase)
+        run: |
+          REPLACE=${{ matrix.serives }}
+          SERVICES="${REPLACE/-/_ }"
+          echo $SERVICES
