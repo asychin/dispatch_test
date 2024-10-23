@@ -16,7 +16,9 @@ env:
 jobs:
   TestJson:
     runs-on: ubuntu-latest
-
+    #Matrix Strategy
+    strategy:
+      fail-fast: true
       matrix:
         text: ${{ fromJSON(format('[{0}]', inputs.services)) }}
     permissions:
