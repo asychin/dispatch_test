@@ -24,6 +24,5 @@ jobs:
     steps:
       - name: Dash to undercase for services (servrets only undercase)
         run: |
-          echo "api-gateway", "api-service" | tr - _
           echo "SERVICE=$(echo ${{ matrix.text }} | tr - _)" >> $GITHUB_ENV
-          echo ${{ env.SERVICE }}
+          echo $SERVICE
