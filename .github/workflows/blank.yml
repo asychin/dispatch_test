@@ -9,9 +9,6 @@ on:
         description: 'Services to build and deploy (comma separated): "api-gateway","api-service","etc service"'
         default: '"api-gateway", "api-service"'
         required: true
-env:
-  GITPATH: './packages/'
-  REPO: 'nexus-trillions.wsdemo.online/'
 
 jobs:
   TestJson:
@@ -27,5 +24,6 @@ jobs:
     steps:
       - name: Dash to undercase for services (servrets only undercase)
         run: |
-          echo "SERVICE=$(echo ${ matrix.text } | tr - _)" >> $GITHUB_ENV
+          echo "api-gateway", "api-service" | tr - _
+          echo "SERVICE=$(echo ${{ matrix.text }} | tr - _)" >> $GITHUB_ENV
           echo ${{ env.SERVICE }}
